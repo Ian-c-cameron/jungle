@@ -55,5 +55,18 @@ class OrdersController < ApplicationController
     order.save!
     order
   end
+  def enhanced_line_items
+    line_items = {}
+    @order.line_items.each do |line_item|
+      line_items[line_item.product.id.to_s] = line_item.quantity
+    end
+    @enhanced_line_items ||= Product.where(id: line_items.keys).map {|product| { product:product, quantity: line_items[product.id.to_s] } }
+  end
+  helper_method :enhanced_line_items
+
+  def order_subtotal_cents
+    @order.line_items.map {|entry| entry[:total_price_cents]}.sum
+  end
+  helper_method :order_subtotal_cents
 
 end
