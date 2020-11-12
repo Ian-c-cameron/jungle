@@ -15,3 +15,13 @@ body {
 form.button_to {
   display: inline;
 }
+
+.admin-dashbrd {
+  border: 2px solid black;
+  .card-header {
+    border-bottom: 2px solid black;
+  }
+  .card-body{
+    padding: 2px;
+  }
+}

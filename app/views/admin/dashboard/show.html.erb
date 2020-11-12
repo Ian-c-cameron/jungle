@@ -1,2 +1,24 @@
 <h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<div class="admin-dashbrd card border-info mb-3" style="max-width: 18rem;">
+  <div class="card-header text-center">Product Stats</div>
+  <div class="card-body p-10">
+    <h6 class="card-subtitle mb-2 text-muted">Total Products Listed</h6>
+    <p class="card-text"><%= @all_products[:count] %></p>
+    <h6 class="card-subtitle mb-2 text-muted">Average Product Price</h6>
+    <p class="card-text"><%= humanized_money_with_symbol @all_products[:avg_price] / 100.0 %></p>
+    <h6 class="card-subtitle mb-2 text-muted">Average Stock Per Product</h6>
+    <p class="card-text"><%= @all_products[:avg_quantity] %></p>
+    <h6 class="card-subtitle mb-2 text-muted">Total Stock Value</h6>
+    <p class="card-text"><%= humanized_money_with_symbol @all_products[:total_stock_value] / 100.0 %></p>
+  </div>
+</div>
+<br>
+<div class="admin-dashbrd card border-info mb-3" style="max-width: 18rem;">
+  <div class="card-header text-center">Category Stats</div>
+  <div class="card-body p-10">
+    <h6 class="card-subtitle mb-2 text-muted">Total Categories Listed</h6>
+    <p class="card-text"><%= @category_details[:count] %></p>
+    <h6 class="card-subtitle mb-2 text-muted">Average Products Per Category</h6>
+    <p class="card-text"><%= @category_details[:avg_products] %></p>
+  </div>
+</div>
