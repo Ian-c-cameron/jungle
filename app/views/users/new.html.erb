@@ -1,11 +1,47 @@
-<h1>Signup!</h1>
+<section class="users-new">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_for @user do |form| %>
+        <h1>Signup!</h1>
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-<%= form_for :user, url: '/users' do |f| %>
+        <div class="form-group">
+          <%= form.label :first_name %>
+          <%= form.text_field :first_name, required: true, class: 'form-control' %>
+        </div>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+        <div class="form-group">
+          <%= form.label :last_name %>
+          <%= form.text_field :last_name, required: true, class: 'form-control' %>
+        </div>
 
-<% end %>
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.text_field :email, required: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password %>
+          <%= form.text_field :password, required: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password_confirmation %>
+          <%= form.text_field :password_confirmation, required: true, class: 'form-control' %>
+        </div>
+
+        <%= form.submit 'Submit', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
