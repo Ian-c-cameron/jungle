@@ -19,11 +19,13 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
   scenario "They see one product" do
     # ACT
     visit root_path
+    expect(page).to have_link 'My Cart (0)'
 
-    page.find('article.product', match: :first).find_link("Details", match: :first).click
+
+    page.find('article.product', match: :first).find_button("Add").click
     
     # DEBUG / VERIFY
-    expect(page).to have_css 'article.product-detail'
+    expect(page).to have_link 'My Cart (1)'
     save_screenshot
   end
 
